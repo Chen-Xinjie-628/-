@@ -73,6 +73,8 @@ r:read w:write x:执行 如rw-:可读可写不可执行
 *cat：显示文件
 1.cat[参数]文件
 2.-n:在文件前面显示行号；-b：显示行号，但是空白行不编号
+3.练习cat命令，将EXP01目录下的pdh1*.fa 和data.txt 文件合并成 seq.data 文件，新文件存储在自己的家目录？
+答：cat pdh1_3species.fa data.txt > seq.data
 
 *chmod：权限修改
 1.chmod g+w tml-l  #让同组的（group）可写，对于tml-l这个文件
@@ -94,3 +96,21 @@ r:read w:write x:执行 如rw-:可读可写不可执行
 #管道
 1.管道：将一个命令的输出传送给另一个命令，作为另一个命令的输入
 2.使用方法：命令1|命令2|命令3...|命令n
+3.用grep命令，将EXP01目录下的pdh1*.fa 的所有序列名称输出？
+grep '^>' pdh1_3species.fa
+冉后，计数共有多少条序列？
+grep -c '^>' pdh1_3species.fa 或 grep '^>' pdh1_3species.fa | wc - l
+
+
+#环境配置与管理
+1.export临时设置
+  export PATH=$PATH:$HOME/bin
+将tar.gz文件解压, 将解压后的文件名修改为muscle, 并采用暂时修改环境变量PATH的方法的运行muscle？
+答：tar -zxvf muscle3.8.31_i86linux64.tar.gz  #将tar文件解压
+   mv muscle3.8.31_i86linux64 muscle #修改文件名
+   export PATH=$PATH:/home/Bioinfor/HZAU2023305250128/EXP01 #/home/Bioinfor/HZAU2023305250128/EXP01是使用pwd查找的位置
+   注意：使用改变环境变量PATH的方法可以直接运行muscle，或者是用./muscle 运行；不能直接用muscle运行！
+
+
+
+
