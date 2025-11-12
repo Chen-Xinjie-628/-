@@ -66,9 +66,16 @@ r:read w:write x:执行 如rw-:可读可写不可执行
         -i :interactive,提示是否覆盖
         -r:递归复制（包含子目录一起复制）
 3.举例：cp ../public/chapter01-introduction.ppt ./   #从当前目录的上一级目录下的 public文件夹中，找到名为 chapter01-introduction.ppt的文件，并将其复制到当前目录下
+4.举例：将 EXP01/blat/ 目录复制到刚建立的temp目录下，命令是？可以在复制前后用ls展示temp目录内容。
+cp -r ../EXP01/blat temp/  #-r:表示要递归复制目录及其所有子内容  ../ :上一级目录
+或者：cp -r ./blat temp/   #-r:blat是目录，需要家参数r  ./ :当前目录
+
 
 *rm: 删除目录或文件
 1.删除目录必须加上参数 -r：将指定目录下的所有文件及子目录一并处理
+
+*find：在指定目录下查找文件
+find ./ -name "文件名"
 
 *cat：显示文件
 1.cat[参数]文件
@@ -90,15 +97,18 @@ r:read w:write x:执行 如rw-:可读可写不可执行
 *tar:压缩解压命令
 1.语法：tar 选项[cvt] [目录]
 -c：产生打包文件 -v:显示详细信息 -f：指定压缩后的文件名 -z：打包同时压缩
-2.tar -czvf doc.tar.gz 
+2.tar -czvf doc.tar.gz
+例： 将家目录下的EXP01目录的内容压缩成EXP01.re.tar.gz文件？
+tar -czvf ./EXP01.re.tar.gz ./EXP01
 3.tar -xzvf doc.tar.gz  # -x:解包.tar文件，-v：显示详细信息，-f：指定解压文件，-z：解压缩
+
 
 #管道
 1.管道：将一个命令的输出传送给另一个命令，作为另一个命令的输入
 2.使用方法：命令1|命令2|命令3...|命令n
 3.用grep命令，将EXP01目录下的pdh1*.fa 的所有序列名称输出？
 grep '^>' pdh1_3species.fa
-冉后，计数共有多少条序列？
+然后，计数共有多少条序列？
 grep -c '^>' pdh1_3species.fa 或 grep '^>' pdh1_3species.fa | wc - l
 
 
