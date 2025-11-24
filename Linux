@@ -1,6 +1,6 @@
 #查看文件有多少行：wc -l
 #FASTA格式特点：名字+序列，单行或多行。
-1.统计有多少条序列（有多少个">"）：grep '>' sequence.fasta |wc -l
+1.统计有多少条序列（有多少个">"）：grep '>' sequence.fasta | wc -l
 #FASTQ：4行
 1.fq.|uniq -c| sort >tml   # uniq -c:统计输入中每个唯一行的出现次数  -c：在每一行前加上该行出现的次数 sort：会对输入进行排序 >tml:将命令输出重定向到名为tml的文件中
 
@@ -68,7 +68,7 @@ r:read w:write x:执行 如rw-:可读可写不可执行
 3.举例：cp ../public/chapter01-introduction.ppt ./   #从当前目录的上一级目录下的 public文件夹中，找到名为 chapter01-introduction.ppt的文件，并将其复制到当前目录下
 4.举例：将 EXP01/blat/ 目录复制到刚建立的temp目录下，命令是？可以在复制前后用ls展示temp目录内容。
 cp -r ../EXP01/blat temp/  #-r:表示要递归复制目录及其所有子内容  ../ :上一级目录
-或者：cp -r ./blat temp/   #-r:blat是目录，需要家参数r  ./ :当前目录
+或者：cp -r ./blat temp/   #-r:blat是目录，需要加参数r  ./ :当前目录
 
 
 *rm: 删除目录或文件
