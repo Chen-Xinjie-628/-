@@ -1,0 +1,13 @@
+blastn：
+cp -r ../blastSeq/ ./
+cd blastSeq/
+tar -zxvf blast-2.12.tar.gz
+./ncbi-balst-2.12.0+/bin/makebalstdb -in Cotton.N.fa -dbtype nucl -title Cotton.N.fa
+./ncbi-balst-2.12.0+/bin/blastn -db Cotton.N.fa -query Qiery.N.fa -evalue 0.01 -out Query.blastn.e01.out
+less -S Query.blastn.e01.out
+blastp:
+./ncbi-balst-2.12.0+/bin/makebalstdb -in Cotton.P.fa -dbtype prot -title Cotton.P.fa
+./ncbi-balst-2.12.0+/bin/blastp -db Cotton.P.fa -query Qiery.P.fa -evalue 0.01 -out Query.blastp.e01.out
+blastx:
+./ncbi-balst-2.12.0+/bin/makebalstdb -in Cotton.P.fa -dbtype prot -title Cotton.P.fa
+./ncbi-balst-2.12.0+/bin/blastp -db Cotton.P.fa -query Qiery.N.fa -evalue 0.01 -out Query.blastx.e01.out
