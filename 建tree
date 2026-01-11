@@ -1,0 +1,31 @@
+修改查看基因后缀？
+wget --user-agent="Mozilla/5.0" "http://plantgir.cn/(v1.0)Jasminum_sambac.gff.tar.gz" -O Jasminum_sambac.gff
+
+手动剪切
+Gardenia_jasminoides为例
+
+export _JAVA_OPTIONS="-Xmx8g"
+trimmomatic SE \
+/home/xinjie/data/aromatic_plant_353/HYB_output/NGS_dataset/01-Downloaded_raw_data/02-Raw-reads_fastq_gz/Gardenia_jasminoides.fastq.gz \
+/home/xinjie/data/aromatic_plant_353/HYB_output/NGS_dataset/02-Downloaded_clean_data/Gardenia_jasminoides_clean.single.fq.gz \
+-threads 6 -phred33 \
+ILLUMINACLIP:/home/xinjie/data/aromatic_plant_353/TruSeq3-PE-2.fa:2:30:10 \
+SLIDINGWINDOW:4:15 LEADING:3 TRAILING:3 MINLEN:36
+
+stage1
+hybsuite stage1 \
+  -input_list /data/xinjie/aromatic_plant_353/failed_samples_input.txt \
+  -sra_maxsize 100GB \
+  -nt 4 \
+  -process 8 \
+  -output_dir /data/xinjie/aromatic_plant_353/stage1_43species
+
+stage2
+hybsuite stage2 \
+  -input_list ./data/xinjie/353/aromatic_plant_353_2/input_43_051220.txt\
+  -NGS_dir ./stage1_43_1/NGS_dataset \
+  -t ./Angiosperms353.fasta \
+  -output_dir ./stage2_43_1 \
+  -seqs_min_length 100 \
+  -seqs_min_sample_coverage 0.1 \
+  -nt 8 -process 4
