@@ -2,8 +2,7 @@
 wget --user-agent="Mozilla/5.0" "http://plantgir.cn/(v1.0)Jasminum_sambac.gff.tar.gz" -O Jasminum_sambac.gff
 
 手动剪切
-Gardenia_jasminoides为例
-
+Gardenia_jasminoides为例：
 export _JAVA_OPTIONS="-Xmx8g"
 trimmomatic SE \
 /home/xinjie/data/aromatic_plant_353/HYB_output/NGS_dataset/01-Downloaded_raw_data/02-Raw-reads_fastq_gz/Gardenia_jasminoides.fastq.gz \
@@ -12,13 +11,18 @@ trimmomatic SE \
 ILLUMINACLIP:/home/xinjie/data/aromatic_plant_353/TruSeq3-PE-2.fa:2:30:10 \
 SLIDINGWINDOW:4:15 LEADING:3 TRAILING:3 MINLEN:36
 
+在linux里查看这里面的空格和制表符
+cat -A 文件名
+
+跑stage的时候可以先建个环境 比如说 screen -S 123,然后conda env list查看有哪些环境，在输入 coonda activate hybsuite激活环境，在这个screen里跑 退出直接control+A+D
+
 stage1
 hybsuite stage1 \
-  -input_list /data/xinjie/aromatic_plant_353/failed_samples_input.txt \
+  -input_list /data/xinjie/353/aromatic_plant_353_2/input_43_051220.txt \
   -sra_maxsize 100GB \
   -nt 4 \
   -process 8 \
-  -output_dir /data/xinjie/aromatic_plant_353/stage1_43species
+  -output_dir /data/xinjie/353/aromatic_plant_353_2/stage1_43_1
 
 stage2
 hybsuite stage2 \
