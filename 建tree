@@ -16,6 +16,11 @@ cat -A 文件名
 
 跑stage的时候可以先建个环境 比如说 screen -S 123,然后conda env list查看有哪些环境，在输入 coonda activate hybsuite激活环境，在这个screen里跑 退出直接control+A+D
 
+vim编辑器
+vim input_43_same.txt 打开文件
+按 i 键（左下角会显示 “INSERT”，表示可编辑）
+编辑完后，按 Esc 键（退出编辑模式）→ 输入 :wq（保存 + 退出）→ 按回车
+
 stage1
 hybsuite stage1 \
   -input_list /data/xinjie/353/aromatic_plant_353_2/input_43_051220.txt \
